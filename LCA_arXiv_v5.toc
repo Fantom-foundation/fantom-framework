@@ -1,0 +1,35 @@
+\babel@toc {english}{}
+\contentsline {section}{\numberline {1}Introduction}{2}
+\contentsline {subsection}{\numberline {1.1}Contributions}{2}
+\contentsline {subsection}{\numberline {1.2}Paper structure}{2}
+\contentsline {section}{\numberline {2}Preliminaries}{2}
+\contentsline {subsection}{\numberline {2.1}Basic Definitions}{3}
+\contentsline {subsection}{\numberline {2.2}Lamport timestamps}{4}
+\contentsline {subsection}{\numberline {2.3}State Definitions}{4}
+\contentsline {subsection}{\numberline {2.4}Consistent Cut}{5}
+\contentsline {subsection}{\numberline {2.5}Dominator (graph theory)}{6}
+\contentsline {subsection}{\numberline {2.6}OPERA chain (DAG)}{7}
+\contentsline {section}{\numberline {3}Lachesis Protocol}{9}
+\contentsline {subsection}{\numberline {3.1}Peer selection algorithm}{10}
+\contentsline {subsection}{\numberline {3.2}Dynamic participants}{10}
+\contentsline {subsection}{\numberline {3.3}Peer synchronization}{10}
+\contentsline {subsection}{\numberline {3.4}Node Structure}{10}
+\contentsline {subsection}{\numberline {3.5}Peer selection algorithm via Cost function}{11}
+\contentsline {subsection}{\numberline {3.6}Event block creation}{14}
+\contentsline {subsection}{\numberline {3.7}Topological ordering of events using Lamport timestamps}{14}
+\contentsline {subsection}{\numberline {3.8}Domination Relation}{16}
+\contentsline {subsection}{\numberline {3.9}Examples of domination relation in DAGs}{16}
+\contentsline {subsection}{\numberline {3.10}Root Selection}{18}
+\contentsline {subsection}{\numberline {3.11}Clotho Selection}{19}
+\contentsline {subsection}{\numberline {3.12}Atropos Selection}{22}
+\contentsline {subsection}{\numberline {3.13}Lachesis Consensus}{24}
+\contentsline {subsection}{\numberline {3.14}Detecting Forks}{26}
+\contentsline {section}{\numberline {4}Conclusion}{26}
+\contentsline {section}{\numberline {5}Appendix}{27}
+\contentsline {subsection}{\numberline {5.1}Preliminaries}{27}
+\contentsline {subsubsection}{\numberline {5.1.1}Domination relation}{27}
+\contentsline {subsection}{\numberline {5.2}Proof of Lachesis Consensus Algorithm}{28}
+\contentsline {subsubsection}{\numberline {5.2.1}Proof of Byzantine Fault Tolerance for Lachesis Consensus Algorithm}{28}
+\contentsline {subsection}{\numberline {5.3}Semantics of Lachesis protocol}{31}
+\contentsline {section}{\numberline {6}Reference}{34}
+\contentsfinish 
