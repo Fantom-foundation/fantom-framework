@@ -42,7 +42,7 @@
 \newtheorem{exmp}{Example}[section]
 \usepackage[english]{babel}
 
-\newcommand{\dfnn}[2]{$\quad$\textbf{Dfn}. \emph{(#1)} {#2}}
+\newcommand{\dfnn}[2]{$\quad$ \textbf{\emph{(#1)}} {#2}}
 
 \newcommand{\ie}{\textit{i}.\textit{e}.}
 
@@ -118,11 +118,10 @@
 Blockchain has emerged as a technology for secure decentralized  transaction ledgers with broad applications in financial systems, supply chains and health care.
 \emph{Byzantine} fault tolerance~\cite{Lamport82} is addressed in distributed database systems, in which up to one-third of the participant nodes may be compromised. Consensus algorithms~\cite{bcbook15} ensures the integrity of transactions between participants over a distributed network~\cite{Lamport82} and is equivalent to the proof of \emph{Byzantine} fault tolerance in distributed database systems~\cite{randomized03, paxos01}. 
 
-A large number of consensus algorithms have been proposed. For example, 
-The original Nakamoto consensus protocol in Bitcoin uses Proof of Work (PoW)~\cite{bitcoin08}. Proof Of Stake (PoS)~\cite{ppcoin12,dpos14} uses participants' stakes to generate the blocks respectively. 
-Another approach utilizes directed acyclic graphs (DAG) such as Tangle~\cite{tangle17}, Byteball~\cite{byteball16}, and Hashgraph~\cite{hashgraph16}. Our previous paper gives a survey of previous DAG-based approaches~\cite{lachesis01}.
+A large number of consensus algorithms have been proposed. For example; 
+the original Nakamoto consensus protocol in Bitcoin uses Proof of Work (PoW)~\cite{bitcoin08}. Proof Of Stake (PoS)~\cite{ppcoin12,dpos14} uses participants' stakes to generate the blocks respectively. Our previous paper gives a survey of previous DAG-based approaches~\cite{lachesis01}.
 
-In paper~\cite{lachesis01},  we introduced a new consensus protocol, called $L_0$. The protocol $L_0$ is a DAG-based asynchronous non-deterministic protocol that guarantees pBFT.
+In the previous paper~\cite{lachesis01},  we introduced a new consensus protocol, called $L_0$. The protocol $L_0$ is a DAG-based asynchronous non-deterministic protocol that guarantees pBFT.
 $L_0$ generates each block asynchronously and uses the OPERA chain (DAG) for faster consensus by confirming how many nodes share the blocks.
 
 The Lachesis protocol as previously proposed is a set of protocols that create a directed acyclic graph for distributed systems. Each node can receive transactions and batch them into an event block. An event block is then shared with it's peers. When peers communicate they share this information again and thus spread this information through the network. In BFT systems we would use a broadcast voting approach and ask each node to vote on the validity of each block. This event is synchronous in nature. Instead we proposed an asynchronous system where we leverage the concepts of distributed common knowledge, dominator relations in graph theory and broadcast based gossip to achieve a local view with high probability of being a global view. It accomplishes this asynchronously, meaning that we can increase throughput near linearly as nodes enter the network.
@@ -161,7 +160,7 @@ Let $v_c$ be a vertex in $G$.
 A vertex $v_p$ is the \emph{parent} of $v_c$ if there is an edge from $v_p$ to $v_c$.
 A vertex $v_a$ is an \emph{ancestor} of $v_c$ if there is a path from $v_a$ to $v_c$.
 
-\begin{figure}[h] \centering
+\begin{figure}[H] \centering
 \includegraphics[height=5cm, width=1.0\columnwidth]{OPERA_chain.pdf}
 \caption{An Example of OPERA Chain}
 \label{fig:operachain}
@@ -171,29 +170,29 @@ Figure~\ref{fig:operachain} shows an example of an OPERA chain (DAG) constructed
 
 \subsection{Basic Definitions}
 
-\dfnn{Lachesis}{The set of protocols}
+\dfnn{Lachesis}{The set of \emph{protocols}}
 
-\dfnn{Node}{Each machine that participates in the Lachesis protocol is called a node. Let $n$ denote the total number of nodes.}
+\dfnn{Node}{Each machine that participates in the Lachesis protocol is called a \emph{node}. Let $n$ denote the total number of nodes.}
 
-\dfnn{$k$}{A constant defined in the system.}
+\dfnn{$k$}{A \emph{constant} defined in the system.}
 
-\dfnn{Peer node}{A node $n_i$ has $k$ peer nodes.}
+\dfnn{Peer node}{A node $n_i$ has $k$ \emph{peer nodes}.}
 
-\dfnn{Process}{A process $p_i$ represents a machine or a node. The process identifier of $p_i$ is $i$. A set $P$ = \{1,...,$n$\} denotes the set of process identifiers.}
+\dfnn{Process}{A process $p_i$ represents a machine or a \emph{node}. The process identifier of $p_i$ is $i$. A set $P$ = \{1,...,$n$\} denotes the set of process identifiers.}
 
-\dfnn{Channel}{ A process $i$ can send messages to process $j$ if there is a channel ($i$,$j$). Let $C$ $\subseteq$ \{($i$,$j$) s.t. $i,j \in P$\} denote the set of channels.}
+\dfnn{Channel}{A process $i$ can send messages to process $j$ if there is a channel ($i$,$j$). Let $C$ $\subseteq$ \{($i$,$j$) s.t. $i,j \in P$\} denote the set of channels.}
 
 \dfnn{Event block}{Each node can create event blocks, send (receive) messages to (from) other nodes.The structure of an event block includes the signature, generation time, transaction history, and hash information to references.}
 
- All nodes can create event blocks. The information of the referenced event blocks can be copied by each node. The first event block of each node is called a \emph{leaf event}.
+All nodes can create event blocks. The information of the referenced event blocks can be copied by each node. The first event block of each node is called a \emph{leaf event}.
  
-Suppose a node $n_i$ creates an event $v_c$ after an event $v_s$ in $n_i$.  Each event block has exactly $k$ references. One of the references is self-reference, and the other $k$-1 references point to the top events of $n_i$'s $k$-1 peer nodes.\\
+Suppose a node $n_i$ creates an event $v_c$ after an event $v_s$ in $n_i$.  Each event block has exactly $k$ references. One of the references is self-reference, and the other $k$-1 references point to the top events of $n_i$'s $k$-1 peer nodes.
 
 \dfnn{Top event}{An event $v$ is a top event of a node $n_i$ if there is no other event in $n_i$ referencing $v$.}
 
-\dfnn{Height Vector}{The height vector is the number of event blocks created by the $i^{th}$ node.}
+\dfnn{Height Vector}{The height vector is the number of event blocks \emph{created} by the $i^{th}$ node.}
 
-\dfnn{In-degree Vector}{The in-degree vector refers to the number of edges from other event blocks created by other nodes to the top event block of this node. The top event block indicates the most recently created event block by this node.}
+\dfnn{In-degree Vector}{The in-degree vector refers to the number of \emph{edges} from other event blocks created by other nodes to the top event block of this node. The top event block indicates the most recently created event block by this node.}
 
 \dfnn{Ref}{An event $v_r$ is called ``ref" of event $v_c$ if the reference hash of $v_c$ points to the event $v_r$. Denoted by $v_c \eref v_r$. For simplicity, we can use $\erefz$ to denote a reference relationship (either $\eref$ or $\eself$).}
 
@@ -205,7 +204,7 @@ Suppose a node $n_i$ creates an event $v_c$ after an event $v_s$ in $n_i$.  Each
 
 \dfnn{Ancestor}{An event block $v_a$ is an ancestor of an event block $v_c$ if there is a sequence of events such that $v_c \erefz v_1 \erefz \dots \erefz v_m \erefz v_a $. Denoted by $v_c \eancestor v_a$.}
 
- For simplicity, we simply use $v_c \eancestor v_s$ to refer both ancestor and self-ancestor relationship, unless we need to distinguish the two cases.
+For simplicity, we simply use $v_c \eancestor v_s$ to refer both ancestor and self-ancestor relationship, unless we need to distinguish the two cases.
 
 \dfnn{Flag Table}{The flag table is a $n x k$ matrix, where n is the number of nodes and k is the number of roots that an event block can reach. If an event block $e$ created by $i^{th}$ node can reach $j^{th}$ root, then the flag table stores the hash value of the $j^{th}$ root.}
 
@@ -227,13 +226,14 @@ We use this total ordering in our Lachesis protocol. This ordering is used to de
 
 \dfnn{Happened-before}{An event block $v_x$ is said Happened-Before an event block $v_y$ if $v_x$ is a (self-) ancestor of $v_y$. Denoted by $v_x \hbefore v_y$.}
 
- Happened-before is the relationship between nodes which have event blocks. If there is a path from an event block $v_x$ to $v_y$, then $v_x$ Happened-before $v_y$. ``$v_x$ Happened-before $v_y$" means that the node creating $v_y$ knows event block $v_x$. This relation is the transitive closure of happens-immediately-before. Thus, an event $v_x$ happened before an event $v_y$ if one of the followings happens: (a) $v_y \eself v_x$, (b) $v_y \eref v_x$,  or (c) $v_y \eancestor v_x$. The happened-before relation of events form an acyclic directed graph $G' = (V, E')$ such that an edge $(v_i,v_j) \in E'$ has a reverse direction of the same edge in $E$.
+Happened-before is the relationship between nodes which have event blocks. If there is a path from an event block $v_x$ to $v_y$, then $v_x$ Happened-before $v_y$. ``$v_x$ Happened-before $v_y$" means that the node creating $v_y$ knows event block $v_x$. This relation is the transitive closure of happens-immediately-before. Thus, an event $v_x$ happened before an event $v_y$ if one of the followings happens: (a) $v_y \eself v_x$, (b) $v_y \eref v_x$,  or (c) $v_y \eancestor v_x$. The happened-before relation of events form an acyclic directed graph $G' = (V, E')$ such that an edge $(v_i,v_j) \in E'$ has a reverse direction of the same edge in $E$.
 
 \dfnn{Concurrent}{Two event blocks $v_x$ and $v_y$ are said concurrent if neither of them  happened before the other. Denoted by $v_x \concur v_y$.}
-	
-	Given two vertices $v_x$ and $v_y$ both contained in two OPERA chains (DAGs) $G_1$ and $G_2$ on two nodes. We have the following: 
-	(1) $v_x \hbefore v_y$ in $G_1$ if $v_x \hbefore v_y$ in $G_2$; (2)
-	$v_x \concur v_y$ in $G_1$ if $v_x \concur v_y$ in $G_2$.
+
+Given two vertices $v_x$ and $v_y$ both contained in two OPERA chains (DAGs) $G_1$ and $G_2$ on two nodes. We have the following: \\
+
+(1) $v_x \hbefore v_y$ in $G_1$ if $v_x \hbefore v_y$ in $G_2$;\\ 
+(2)$v_x \concur v_y$ in $G_1$ if $v_x \concur v_y$ in $G_2$.
 
 \subsection{State Definitions}
 
@@ -243,10 +243,11 @@ Each node has a local state, a collection of histories, messages, event blocks, 
 
 \dfnn{Local State}{A local state consists of a sequence of event blocks $s_j^i = v_0^i, v_1^i, \dots, v_j^i$.}
 
- In a DAG-based protocol, each $v_j^i$ event block is valid only if the reference blocks exist before it. From a local state $s_j^i$, one can reconstruct a unique DAG. That is, the mapping from a local state  $s_j^i$ into a DAG is \emph{injective} or one-to-one. Thus, for Fantom, we can simply denote the $j$-th local state of a process $i$ by the DAG $g_j^i$ (often we simply use $G_i$ to denote the current local state of a process $i$).
+In a DAG-based protocol, each $v_j^i$ event block is valid only if the reference blocks exist before it. From a local state $s_j^i$, one can reconstruct a unique DAG. That is, the mapping from a local state  $s_j^i$ into a DAG is \emph{injective} or one-to-one. Thus, for Fantom, we can simply denote the $j$-th local state of a process $i$ by the DAG $g_j^i$ (often we simply use $G_i$ to denote the current local state of a process $i$).
 
 \dfnn{Action}{An action is a function from one local state to another local state.}
- Generally speaking, an action can be one of: a $send(m)$ action where $m$ is a message, a $receive(m)$ action, and an internal action. A message $m$ is a triple $\langle i,j,B \rangle$ where $i \in P$ is the sender of the message, $j \in P$ is the message recipient, and $B$ is the body of the message. Let $M$ denote the set of messages. In the Lachesis protocol, $B$ consists of the content of an event block $v$.\\
+
+Generally speaking, an action can be one of: a $send(m)$ action where $m$ is a message, a $receive(m)$ action, and an internal action. A message $m$ is a triple $\langle i,j,B \rangle$ where $i \in P$ is the sender of the message, $j \in P$ is the message recipient, and $B$ is the body of the message. Let $M$ denote the set of messages. In the Lachesis protocol, $B$ consists of the content of an event block $v$.\\
 
 Semantics-wise, in Lachesis, there are  two actions that can change a process's local state: creating a new event and receiving an event from another process.\\
 
@@ -256,7 +257,7 @@ The $j$-th event in history $h_i$ of process $i$ is $\langle  s_{j-1}^i,\alpha,s
 
 \dfnn{Local history}{A local history $h_i$ of process $i$ is a (possibly infinite) sequence of alternating local states  --- beginning with a distinguished initial state. A set $H_i$ of possible local histories for each process $i$ in $P$.}
 
- The state of a process can be obtained from its initial state and the sequence of actions or events that have occurred up to the current state. In the Lachesis protocol, we use append-only semantics. The local history may be equivalently described as either of the following:
+The state of a process can be obtained from its initial state and the sequence of actions or events that have occurred up to the current state. In the Lachesis protocol, we use append-only semantics. The local history may be equivalently described as either of the following:
 $$h_i = s_0^i,\alpha_1^i,\alpha_2^i, \alpha_3^i \dots $$
 $$h_i = s_0^i, v_1^i,v_2^i, v_3^i \dots $$
 $$h_i = s_0^i, s_1^i, s_2^i, s_3^i, \dots$$
@@ -286,7 +287,7 @@ If node $i$ selects node $j$ as a peer, then $(i,j) \in C$. In general, one can 
 
 \dfnn{Consistent cut}{A consistent cut of a run $\sigma$ is any global state such that if $v_x^i \rightarrow v_y^j$ and $v_y^j$ is in the global state, then $v_x^i$ is also in the global state. Denoted by $\vec{c}(\sigma)$.}
 
- The concept of consistent cut formalizes such a global state of a run. A consistent cut consists of all consistent DAG chains. A received event block exists in the global state implies the existence of the original event block. Note that a consistent cut is simply a vector of local states; we will use the notation $\vec{c}(\sigma)[i]$ to indicate the local state of $i$ in cut $\vec{c}$ of run $\sigma$.
+The concept of consistent cut formalizes such a global state of a run. A consistent cut consists of all consistent DAG chains. A received event block exists in the global state implies the existence of the original event block. Note that a consistent cut is simply a vector of local states; we will use the notation $\vec{c}(\sigma)[i]$ to indicate the local state of $i$ in cut $\vec{c}$ of run $\sigma$.
 
 A message chain of an asynchronous run is a sequence of messages $m_1$, $m_2$, $m_3$, $\dots$, such that, for all $i$, $receive(m_i)$ $\rightarrow$  $send(m_{i+1})$. Consequently, $send(m_1)$ $\rightarrow$ $receive(m_1)$ $\rightarrow$ $send(m_2)$ $\rightarrow$ $receive(m_2)$ $\rightarrow$ $send(m_3)$ $\dots$.
 
@@ -297,24 +298,25 @@ We assume that we are given a function $\pi$ that assigns a truth value to each 
 \dfnn{Equivalent cuts}{Two cuts $\vec{c}(\sigma)$ and $\vec{c'}(\sigma')$ are equivalent  with respect to $i$ if: $$\vec{c}(\sigma) \sim_i \vec{c'}(\sigma') \Leftrightarrow \vec{c}(\sigma)[i] = \vec{c'}(\sigma')[i]$$.}
 
 \dfnn{$i$ knows $\phi$}{$K_i(\phi)$ represents the statement ``$\phi$ is true in all possible consistent global states that include $i$’s local state''. 
-		$$\vec{c}(\sigma) \vdash K_i(\phi) \Leftrightarrow \forall \vec{c'}(\sigma')   (\vec{c'}(\sigma') \sim_i \vec{c}(\sigma) \ \Rightarrow\ \vec{c'}(\sigma') \vdash \phi) $$}
+$$\vec{c}(\sigma) \vdash K_i(\phi) \Leftrightarrow \forall \vec{c'}(\sigma')   (\vec{c'}(\sigma') \sim_i \vec{c}(\sigma) \ \Rightarrow\ \vec{c'}(\sigma') \vdash \phi) $$}
 
 \dfnn{$i$ partially knows $\phi$}{$P_i(\phi)$ represents the statement ``there is some consistent global state in this run that includes $i$’s local state, in which $\phi$ is true.''
-		$$\vec{c}(\sigma) \vdash P_i(\phi) \Leftrightarrow \exists \vec{c'}(\sigma) ( \vec{c'}(\sigma) \sim_i \vec{c}(\sigma) \ \wedge\ \vec{c'}(\sigma) \vdash \phi )$$}
+$$\vec{c}(\sigma) \vdash P_i(\phi) \Leftrightarrow \exists \vec{c'}(\sigma) ( \vec{c'}(\sigma) \sim_i \vec{c}(\sigma) \ \wedge\ \vec{c'}(\sigma) \vdash \phi )$$}
 		
 \dfnn{Majority concurrently knows}{The next modal operator is written $M^C$ and stands for ``majority concurrently knows.''
 The definition of $M^C(\phi)$ is as follows.
 
 $$M^C(\phi) =_{def} \bigwedge_{i \in S} K_i P_i(\phi), $$ where $S \subseteq P$ and $|S| > 2n/3$.}
- This is adapted from the ``everyone concurrently knows'' in CCK paper~\cite{cck92}.
+
+This is adapted from the ``everyone concurrently knows'' in CCK paper~\cite{cck92}.
 In the presence of one-third of faulty nodes, the original operator ``everyone concurrently knows'' is sometimes not feasible.
 Our modal operator $M^C(\phi)$ fits precisely the semantics for BFT systems, in which unreliable processes may exist.\\
 
 \dfnn{Concurrent common knowledge}{The last modal operator is concurrent common knowledge (CCK), denoted by $C^C$. $C^C(\phi)$ is defined as a fixed point of $M^C(\phi \wedge X)$.}
 
 CCK defines a state of process knowledge that implies that all processes are in that same state of knowledge, with respect to $\phi$, along some cut of the run. In other words, we want a state of knowledge $X$ satisfying: $X = M^C(\phi \wedge X)$.	
-$C^C$ will be defined semantically as the weakest such fixed point, namely as the greatest fixed-point of $M^C(\phi \wedge X)$.
-It therefore satisfies:
+$C^C$ will be defined semantically as the weakest such fixed point, namely as the greatest fixed-point of $M^C(\phi \wedge X)$.It therefore satisfies:
+
 $$C^C(\phi) \Leftrightarrow  M^C(\phi \wedge C^C(\phi))$$
 
 Thus, $P_i(\phi)$ states that there is some cut in the same asynchronous run $\sigma$ including $i$’s local state, such that $\phi$ is true in that cut.\\
@@ -349,7 +351,7 @@ With the pseudo vertices, we have $\bot$ happened-before all event blocks. Also 
 
 \dfnn{Dominance frontier}{The dominance frontier of a vertex $v_d$ is the set of all nodes $v_x$ such that $v_d \domf v_x$. Denoted by $DF(v_d)$.}
 
- From the above definitions of domfront and dominance frontier, the following holds. If $v_d \domf v_x$, then $v_x \in DF(v_d)$.
+From the above definitions of domfront and dominance frontier, the following holds. If $v_d \domf v_x$, then $v_x \in DF(v_d)$.
 	 
 \subsection{OPERA chain (DAG)}
 
@@ -373,11 +375,11 @@ OPERA chain is a DAG graph $G = (V, E)$ consisting of $V$ vertices and $E$ edges
 
 \dfnn{Consistent chains}{OPERA chains $G_1$ and $G_2$ are consistent if for any event $v$ contained in both chains, $G_1[v] = G_2[v]$. Denoted by $G_1 \sim G_2$.}
 
- When two consistent chains contain the same event $v$, both chains contain the same set of ancestors for $v$, with the same reference and self-ref edges between those ancestors.
+When two consistent chains contain the same event $v$, both chains contain the same set of ancestors for $v$, with the same reference and self-ref edges between those ancestors.
 
 If two nodes have OPERA chains containing event $v$, then they have the same $k$ hashes contained within $v$. A node will not accept an event during a sync unless that node already has $k$ references for that event, so both OPERA chains must contain $k$ references for $v$. The cryptographic hashes are assumed to be secure, therefore the references must be the same. By induction, all ancestors of $v$ must be the same. Therefore, the two OPERA chains are consistent.\\
 
-\dfnn{Creator)}{If a node $n_x$ creates an event block $v$, then the creator of $v$, denoted by $cr(v)$, is $n_x$.}
+\dfnn{Creator}{If a node $n_x$ creates an event block $v$, then the creator of $v$, denoted by $cr(v)$, is $n_x$.}
 
 \dfnn{Consistent chain}{A global consistent chain $G^C$ is a chain if $G^C \sim G_i$ for all $G_i$.}
 
@@ -393,18 +395,12 @@ We denote $G \sqsubseteq G'$ to stand for $G$ is a subgraph of $G'$. Some proper
 
 \dfnn{Consistent root}{Two chains $G_1$ and $G_2$ are root consistent, if for every $v$ contained in both chains, $v$ is a root of $j$-th frame in $G_1$, then $v$ is a root of $j$-th frame in $G_2$.}
 
-\begin{lem}
-If $G_1 \sim G_2$, then $G_1$ and $G_2$ are root consistent.
-\end{lem}
-\begin{proof}
 By consistent chains, if $G_1 \sim G_2$ and $v$ belongs to both chains, then $G_1[v]$ = $G_2[v]$.
-	We can prove the proposition by induction. For $j$ = 0, the first root set is the same in both $G_1$ and $G_2$. Hence, it holds for $j$ = 0. Suppose that the proposition holds for every $j$ from 0 to $k$. We prove that it also holds for $j$= $k$ + 1.
-	 Suppose that $v$ is a root of frame $f_{k+1}$ in $G_1$. 
-	Then there exists a set $S$ reaching 2/3 of members in $G_1$ of frame $f_k$ such that $\forall u \in S$ ($u\hbefore v$). As $G_1 \sim G_2$, and $v$ in $G_2$, then $\forall u \in S$ ($u \in G_2$). Since the proposition holds for $j$=$k$, 
-	As $u$ is a root of frame $f_{k}$ in $G_1$, $u$ is a root of frame $f_k$ in $G_2$. Hence, the set $S$ of 2/3 members $u$ happens before $v$ in $G_2$. So $v$ belongs to $f_{k+1}$ in $G_2$.
-\end{proof}
+We can prove the proposition by induction. For $j$ = 0, the first root set is the same in both $G_1$ and $G_2$. Hence, it holds for $j$ = 0. Suppose that the proposition holds for every $j$ from 0 to $k$. We prove that it also holds for $j$= $k$ + 1.
+Suppose that $v$ is a root of frame $f_{k+1}$ in $G_1$. 
+Then there exists a set $S$ reaching 2/3 of members in $G_1$ of frame $f_k$ such that $\forall u \in S$ ($u\hbefore v$). As $G_1 \sim G_2$, and $v$ in $G_2$, then $\forall u \in S$ ($u \in G_2$). Since the proposition holds for $j$=$k$, 
+As $u$ is a root of frame $f_{k}$ in $G_1$, $u$ is a root of frame $f_k$ in $G_2$. Hence, the set $S$ of 2/3 members $u$ happens before $v$ in $G_2$. So $v$ belongs to $f_{k+1}$ in $G_2$.
 	
-From the above lemma, $G^C$ is root consistent with $G_i$ for all nodes.
 Thus, all nodes have the same consistent root sets, which are the root sets in $G^C$. Frame numbers are consistent for all nodes.\\
 
 \dfnn{Flag table}{A flag table stores reachability from an event block to another root. The sum of all reachabilities, namely all values in flag table, indicates the number of reachabilities from an event block to other roots.}
@@ -450,10 +446,11 @@ The Main chain can be used efficiently in transaction information management by 
 
 Based on these advantages, OPERA chain can respond strongly to efficient transaction treatment and attacks through its Main-chain.
 
+\newpage
 \section{Lachesis Protocol}\label{se:lca}
 
 %main procedure
-\begin{algorithm}[h]
+\begin{algorithm}[H]
 \caption{Main Procedure}\label{al:main}
 \begin{algorithmic}[1]
 	\Procedure{Main Procedure}{}
@@ -487,16 +484,13 @@ Within distributed system, a node can select other nodes with low communication 
 \subsection{Dynamic participants}
 Our Lachesis protocol allows an arbitrary number of participants to dynamically join the system. The OPERA chain (DAG) can still operate with new participants. Computation on flag tables is set based and independent of which and how many participants have joined the system. Algorithms for selection of Roots, Clothos and Atroposes are flexible enough and not dependence on a fixed number of participants.
 
+\newpage
 \subsection{Peer synchronization}
 
 We describe an algorithm that synchronizes events between the nodes.
 
-The algorithm assumes that a node always needs the events in topological ordering (specifically in reference to the lamport timestamps), an alternative would be to use an inverse bloom lookup table (IBLT) for completely potential randomized events. \\
-
-Alternatively, one can simply use a fixed incrementing index to keep track of the top event for each node.\\
-
 %main procedure
-\begin{algorithm}
+\begin{algorithm}[H]
 	\caption{EventSync}\label{al:syncevents}
 	\begin{algorithmic}[1]
 		\Procedure{sync-events()}{}		
@@ -512,6 +506,10 @@ Alternatively, one can simply use a fixed incrementing index to keep track of th
 	\end{algorithmic}
 \end{algorithm}
 
+The algorithm assumes that a node always needs the events in topological ordering (specifically in reference to the lamport timestamps), an alternative would be to use an inverse bloom lookup table (IBLT) for completely potential randomized events. \\
+
+Alternatively, one can simply use a fixed incrementing index to keep track of the top event for each node.\\
+
 \subsection{Node Structure}
 This section gives an overview of the node structure in Lachesis.
 
@@ -519,7 +517,7 @@ Each node has a height vector, in-degree vector, flag table, frames, clotho chec
 
 Frames store the root set in each frame. Clotho check list has two types of check points; Clotho candidate ($CC$) and Clotho ($C$). If a root in a frame is a $CC$, a node check the $CC$ part and if a root becomes Clotho, a node check $C$ part. Max-min value is timestamp that addresses for Atropos selection. The Main-chain is a data structure storing hash values of the Atropos blocks. 
 
-\begin{figure} \centering  
+\begin{figure}[H] \centering  
 \includegraphics[width=.5\textwidth]{Node_structure.pdf}
 \caption{An Example of Node Structure}
 \label{fig:node}
@@ -540,15 +538,15 @@ C_{F} =I/H
 
 where $I$ and $H$ denote values of in-degree vector and height vector respectively. If the number of nodes with the lowest $C_F$ is more than $k$, one of the nodes is selected at random. The reason for selecting high $H$ is that we can expect a high possibility to create a root because the high $H$ indicates that the communication frequency of the node had more opportunities than others with low $H$. Otherwise, the nodes that have high $C_F$ (the case of $I$ $>$ $H$) have generated fewer event blocks than the nodes that have low $C_F$.. 
 
-\begin{figure} \centering  
+\begin{figure}[H] \centering  
 \includegraphics[width=.8\textwidth]{costfunction_1.pdf}
 \caption{An Example of Cost Function 1}
 \label{fig:costfunction_1}
 \end{figure}
-\newpage
+
 Figure~\ref{fig:costfunction_1} shows an example of the node selection based on the cost function after the creation of leaf events by all nodes. In this example, there are five nodes and each node created leaf events. All nodes know other leaf events. Node $A$ creates an event block $v_1$ and $A$ calculates the cost functions. Step 2 in Figure~\ref{fig:costfunction_1} shows the results of cost functions based on the height and in-degree vectors of node $A$. In the initial step, each value in the vectors are same because all nodes have only leaf events. Node $A$ randomly selects $k$ nodes and connects $v_1$ to the leaf events of selected nodes. In this example, we set $k$=3 and assume that node $A$ selects node $B$ and $C$. 
 
-\begin{figure}[h] \centering  
+\begin{figure}[H] \centering  
 \includegraphics[width=.8\textwidth]{costfunction_2.pdf}
 \caption{An Example of Cost Function 2}
 \label{fig:costfunction_2}
@@ -559,7 +557,7 @@ Figure~\ref{fig:costfunction_2} shows an example of the node selection after a f
 The height of node $D$ in the example is 2 (leaf event and event block $v_4$). On the other hand, the height of node $D$ in node structure of $A$ is 1. Node $A$ is still not aware of the presence of the event block $v_4$. It means that there is no path from the event blocks created by node $A$ to the event block $v_4$. Thus, node $A$ has 1 as the height of node $D$. 
 
 %node selection
-\begin{algorithm}
+\begin{algorithm}[H]
 \caption{$k$-neighbor Node Selection}\label{al:ns}
 \begin{algorithmic}[1]
 	\Procedure{$k$-node Selection}{}
@@ -580,12 +578,12 @@ The height of node $D$ in the example is 2 (leaf event and event block $v_4$). O
 	\EndProcedure
 \end{algorithmic}
 \end{algorithm}
-\newpage
+
 Algorithm~\ref{al:ns} shows the selecting algorithm for selecting reference nodes. The algorithm operates for each node to select a communication partner from other nodes. Line 4 and 5 set min\_cost and $S_{ref}$ to initial state. Line 7 calculates the cost function $c_f$ for each node. In line 8, 9, and 10, we find the minimum value of the cost function and set min\_cost and $S_{ref}$ to $c_f$ and the ID of each node respectively. Line 11 and 12 append the ID of each node to $S_{ref}$ if min\_cost equals $c_f$. Finally, line 13 selects randomly $k$ node IDs from $S_{ref}$ as communication partners. The time complexity of Algorithm 2 is $O(n)$, where $n$ is the number of nodes. 
 
 After the reference node is selected, each node communicates and shares information of all event blocks known by them. A node creates an event block by referring to the top event block of the reference node. The Lachesis protocol works and communicates asynchronously. This allows a node to create an event block asynchronously even when another node creates an event block. The communication between nodes does not allow simultaneous communication with the same node. 
 
-\begin{figure}[h] \centering  
+\begin{figure}[H] \centering  
 \includegraphics[height=7cm, width=1.0\columnwidth]{node_selection.pdf}
 \caption{An Example of Node Selection}
 \label{fig:node_selection}
@@ -604,7 +602,9 @@ In the Lachesis protocol, every node can create an event block. Each event block
 \item The other $k$-1 reference refers to the other $k$-1 top event nodes on other nodes.
 \end{enumerate}
 
-\begin{figure} \centering  
+\newpage
+
+\begin{figure}[H] \centering  
 \includegraphics[width=1.0\textwidth]{Ex_eventblock.pdf}
 \caption{An Example of Event Block Creation with Flag Table}
 \label{fig:ex_ebc}
@@ -613,7 +613,7 @@ In the Lachesis protocol, every node can create an event block. Each event block
 Figure~\ref{fig:ex_ebc} shows the example of an event block creation with a flag table. In this example the recent created event block is $b_1$ by node $B$. The figure shows the node structure of node $B$. We omit the other information such as height and in-degree vectors since we only focus on the change of the flag table with the event block creation in this example. The flag table of $b_1$ in Figure~\ref{fig:ex_ebc} is updated with the information of the previous connected event blocks $a_1$, $b_0$, and $c_1$. Thus, the set of the flag table is the 
 results of OR operation among the three root sets for $a1$ ($a_0$, $b_0$, and $c_0$), $b_0$ ($b_0$), and $c_1$ ($b_0$, $c_0$, and $d_0$). 
 
-\begin{figure} \centering  
+\begin{figure}[H] \centering  
 \includegraphics[height=6cm, width=0.7\columnwidth]{sync.pdf}
 \caption{An Example of Communication Process}
 \label{fig:communication process}
@@ -625,13 +625,11 @@ Figure~\ref{fig:communication process}, shows the communication process is divid
 Every node has a physical clock and it needs physical time to create an event block. However, for consensus, Lachesis protocols relies on a logical clock for each node. For the purpose, we use \textit{"Lamport timestamps"} \cite{lamport1978time} to determine the time ordering between event blocks in a asynchronous distributed system.
 
 
-\begin{figure} \centering  
+\begin{figure}[H] \centering  
 	\includegraphics[width=0.7\textwidth, width=1.0\columnwidth]{Lamport_timestamps.pdf}
 	\caption{An example of Lamport timestamps}
 	\label{fig:Lamport}
 \end{figure}
-
-\newpage
 
 The Lamport timestamps algorithm is as follows:
 
@@ -675,7 +673,7 @@ This section gives several examples of DAGs and the domination relation between 
 
 Figure~\ref{fig:domtrees1} shows an examples of a DAG and dominator trees. 
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\linewidth]{domset}
 	\caption{An example of OPERA chain and its 2/3 domination graph. The $\frac{2}{3}$-dom sets are shown in grey.}
@@ -683,9 +681,8 @@ Figure~\ref{fig:domtrees1} shows an examples of a DAG and dominator trees.
 \end{figure}
 
 Figure~\ref{fig:domset1} depicts an example of a DAG and 2/3 dom sets.
-\newpage
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	(a) \includegraphics[width=0.9\linewidth]{deptrees}  \\
 	(b) \includegraphics[width=0.9\linewidth]{deptrees_mod_add1event} \\
@@ -696,8 +693,9 @@ Figure~\ref{fig:domset1} depicts an example of a DAG and 2/3 dom sets.
 
 Figure~\ref{fig:deptreesmod1} shows an example an dependency graphs. On each row, the left most figure shows the latest OPERA chain. The left figures on each row depict the dependency graphs of each node, which are in their compact form. When no fork presents, each of the compact dependency graphs is a tree.
 
+\newpage
 
-\begin{figure}	\centering
+\begin{figure}[H]	\centering
 	(a)\includegraphics[width=0.9\linewidth]{deptrees_fork}\\	(b)\includegraphics[width=0.9\linewidth]{deptrees_fork_add1event}\\
 	(c)\includegraphics[width=0.9\linewidth]{deptrees_fork_add2event}
 	\caption{An example of a pair of fork events in an OPERA chain. The fork events are shown in red and green. The OPERA chains from (a) to (d) are different by adding one single event at a time.}
@@ -712,13 +710,12 @@ All nodes can create event blocks and an event block can be a root when satisfyi
 We introduce the use of a flag table to quickly determine whether a new event block becomes a root. Each node maintains a flag table of the top event block.
 Every event block that is newly created is assigned $k$ hashes for its $k$ referenced event blocks. We apply an $OR$ operation on each set in the flag table of the referenced event blocks.
 
-\begin{figure} [h] \centering  
+\begin{figure} [H] \centering  
 \includegraphics[height=6cm, width=1.0\columnwidth]{Root_selection.pdf}
 \caption{An Example of Root selection}
 \label{fig:ex_ft}
 \end{figure}
 
-\newpage
 Figure~\ref{fig:ex_ft} shows an example of how to use flag tables to determine a root. In this example, $b_1$ is the most recently created event block. We apply an $OR$ operation on each set of the flag tables for $b_1$'s $k$ referenced event blocks. The result is the flag table of $b_1$.  If the cardinality of the root set in $b_1$'s flag table is more than $2n/3$, $b_1$ is a root. In this example, the cardinality of the root set in $b_1$ is 4, which is greater than $2n/3$ ($n$=5). Thus, $b_1$ becomes root. In this example, $b_1$ is added to frame $f_2$ since $b_1$ becomes new root. 
 
 The root selection algorithm is as follows:
@@ -731,8 +728,6 @@ The root selection algorithm is as follows:
 \item When the new root set $R_{S_{k+1}}$ is created, the event blocks from the previous root set $R_{S_k}$ to before $R_{S_{k+1}}$ belong to the frame $f_k$.
 \end{enumerate}
 
-
-
 \subsection{Clotho Selection}
 
 A Clotho is a root that satisfies the Clotho creation conditions. 
@@ -740,29 +735,27 @@ Clotho creation conditions are that more than 2n/3 nodes know the root and a roo
 
 In order for a root $r$ in frame $f_i$ to become a Clotho, $r$ must be reached by more than n/3 roots in the frame $f_{i+1}$. Based on the definition of the root, each root reaches more than 2n/3 roots in previous frames. If more than n/3 roots in the frame $f_{i+1}$ can reach $r$, then $r$ is spread to all roots in the frame $f_{i+2}$. It means that all nodes know the existence of $r$. If we have any root in the frame $f_{i+3}$, a root knows that $r$ is spread to more than 2n/3 nodes. It satisfies Clotho creation conditions. 
 
-\begin{figure} [h] \centering  
+\begin{figure} [H] \centering  
 	\includegraphics[width=0.5\textwidth]{frame4.pdf}
 	\caption{A verification of more than 2n/3 nodes}
 	\label{fig:frame4}
 \end{figure}
 
-\newpage
 In the example in Figure~\ref{fig:frame4}, n is 5 and each circle indicates a root in a frame. Each arrow means one root can reach (happened-before) to the previous root. Each root has 4 or 5 arrows (out-degree) since n is 5 (more than 2n/3 $\geq$ 4). $b_1$ and $c_2$ in frame $f_2$ are roots that can reach $c_0$ in frame $f_1$. $d_1$ and $e_1$ also can reach $c_0$, but we only marked $b_1$ and $c_2$ (when n is 5, more than n/3 $\geq$ 2) since we show at least more than n/3 conditions in this example. And it was marked with a blue bold arrow (Namely, the roots that can reach root $c_0$ have the blue bold arrow). In this situation, an event block must be able to reach $b_1$ or $c_2$ in order to become a root in frame $f_3$ (In our example, n=5, more than n/3 $\geq$ 2, and more than 2n/3 $\geq$ 4. Thus, to be a root, either must be reached). All roots in frame $f_3$ reach $c_0$ in frame $f_1$.  
 
 To be a root in frame $f_4$, an event block must reach more than 2n/3 roots in frame $f_3$ that can reach $c_0$. Therefore, if any of the root in frame $f_4$ exists, the root must have happened-before more than 2n/3 roots in frame $f_3$. Thus, the root of $f_4$ knows that $c_0$ is spread over more than 2n/3 of the entire nodes. Thus, we can select $c_0$ as Clotho. 
 
 
-\begin{figure}[h]\centering  
+\begin{figure}[H]\centering  
 	\includegraphics[width=0.8\textwidth]{Clotho_fig1.pdf}
 	\caption{An Example of Clotho}
 	\label{fig:Clotho}
 \end{figure}
 
-\newpage
 Figure~\ref{fig:Clotho} shows an example of a Clotho. In this example, all roots in the frame $f_1$ have happened-before more than n/3 roots in the frame $f_2$. We can select all roots in the frame $f_1$ as Clotho since the recent frame is $f_4$. 
 
 %Clotho selection
-\begin{algorithm}
+\begin{algorithm} [H]
 \caption{Clotho Selection}\label{al:acs}
 \begin{algorithmic}[1]
 	\Procedure{Clotho Selection}{}
@@ -786,13 +779,12 @@ Figure~\ref{fig:Clotho} shows an example of a Clotho. In this example, all roots
 Algorithm~\ref{al:acs} shows the pseudo code for Clotho selection. The algorithm takes a root $r$ as input. 
 Line 4 and 5 set $c.is\_clotho$ and $c.yes$ to $nil$ and 0 respectively. Line 6-8 checks whether any root $c'$ in $frame(i-3,r)$ has happened-before with the 2n/3 condition $c$ where $i$ is the current frame. In line 9-10, if the number of roots in $frame(i-2,r)$ which happened-before $c$ is more than $2n/3$, the root $c$ is set as a Clotho. The time complexity of Algorithm 3 is $O(n^{2})$, where $n$ is the number of nodes. 
 
-\begin{figure}[h] \centering  
+\begin{figure}[H] \centering  
 	\includegraphics[width=1.0\columnwidth]{Clotho_fig2.pdf}
 	\caption{The node of \textit{A} when Clotho is selected}
 	\label{fig:ClothoNodeA}	
 \end{figure}
 
-\newpage
 Figure~\ref{fig:ClothoNodeA} shows the state of node \textit{A} when a Clotho is selected. In this example, node \textit{A} knows all roots in the frame $f_1$ become Clotho's. Node \textit{A} prunes unnecessary information on its own structure. In this case, node \textit{A} prunes the root set in the frame $f_1$ since all roots in the frame $f_1$ become Clotho and the Clotho Check list stores the Clotho information. 
 
 \subsection{Atropos Selection}
@@ -801,7 +793,7 @@ Atropos selection algorithm is the process in which the candidate time generated
 
 After a Clotho is nominated, each node then computes a candidate time of the Clotho. If there are more than two-thirds of the nodes that compute the same value for candidate time, that time value is recorded. Otherwise, each node reselects candidate time. By the reselection process, each node reaches time consensus for candidate time of Clotho as the OPERA chain (DAG) grows. The candidate time reaching the consensus is called Atropos consensus time. After Atropos consensus time is computed, the Clotho is nominated to Atropos and each node stores the hash value of Atropos and Atropos consensus time in Main-Chain (blockchain). The Main-chain is used for time order between event blocks. The proof of Atropos consensus time selection is shown in the section~\ref{se:proof}. 
 
-\begin{figure}[h] \centering  
+\begin{figure}[H] \centering  
 	\includegraphics[height=8cm, width=1.0\columnwidth]{Atropos_fig1.pdf}
 	\caption{An Example of Atropos}
 	\label{fig:Atropos}
@@ -809,18 +801,19 @@ After a Clotho is nominated, each node then computes a candidate time of the Clo
 
 Figure~\ref{fig:Atropos} shows the example of Atropos selection. In  Figure~\ref{fig:Clotho}, all roots in the frame $f_1$ are selected as Clotho through the existence of roots in the frame $f_4$. Each root in the frame $f_5$ computes candidate time using timestamps of reachable roots in the frame $f_4$. Each root in the frame $f_5$ stores the candidate time to min-max value space. The root $r_6$ in the frame $f_6$ can reach more than 2n/3 roots in $f_5$ and $r_6$ can know the candidate time of the reachable roots that $f_5$ takes. If $r_6$ knows  the same candidate time than more than 2n/3, we select the candidate time as Atropos consensus time. Then all Clotho in the frame $f_1$ become Atropos. 
 
-\begin{figure}[h] \centering  
+\newpage
+
+\begin{figure}[H] \centering  
 	\includegraphics[width=0.8\columnwidth]{Atropos_fig2.pdf}
 	\caption{The node of \textit{B} when Atropos is selected}
 	\label{fig:Atropos_Node}
 \end{figure}
 
-\newpage
 Figure~\ref{fig:Atropos_Node} shows the state of node \textit{B} when Atropos is selected. In this example, node \textit{B} knows all roots in the frame $f_1$ become Atropos. Then node \textit{B} prunes 
 information of the frame $f_1$ in clotho check list since all roots in the frame $f_1$ become Atropos and main chain stores Atropos information. 
 
 %atropos time consensus
-\begin{algorithm}
+\begin{algorithm} [H]
 \caption{Atropos Consensus Time Selection}\label{al:atc}
 \begin{algorithmic}[1]
 	\Procedure{Atropos Consensus Time Selection}{}
@@ -882,9 +875,10 @@ In the Atropos Consensus Time Selection algorithm, nodes reach consensus agreeme
 
 Atropos can be determined by the consensus time of each Clotho. It is an event block that is determined by finality and is non-modifiable. Furthermore, all event blocks can be reached from Atropos guarantee finality.
 
+\newpage
 \subsection{Lachesis Consensus}
 
-\begin{figure}[h] \centering
+\begin{figure}[H] \centering
 \includegraphics[height=7cm, width=1.0\columnwidth]{pBFTtoPath}
 \caption{Consensus Method in a DAG (combines chain with consensus process of pBFT)}
 \label{fig:pBFTtoPath}
@@ -899,13 +893,14 @@ This kind of a path search allows the chain to reach consensus in a similar mann
 
 The sequential order of each event block is an important aspect for Byzantine fault tolerance. In order to determine the pre-and-post sequence between all event blocks, we use Atropos consensus time, Lamport timestamp algorithm and the hash value of the event block.
 
-\begin{figure} \centering  
+\newpage
+
+\begin{figure}[H] \centering  
 	\includegraphics[width=1.0\textwidth]{topological_ordering_rule.pdf}
 	\caption{An example of topological consensus ordering}
 	\label{fig:topological consensus ordering}
 \end{figure}
 
-\newpage
 First, when each node creates event blocks, they have a logical timestamp based on Lamport timestamp. This means that they have a partial ordering between the relevant event blocks. 
 Each Clotho has consensus time to the Atropos. This consensus time is computed based on the logical time nominated from other nodes at the time of the 2n/3 agreement.
 
@@ -917,7 +912,9 @@ Each event block is based on the following three rules to reach an agreement:
 \item When there are more than one Atropos having the same consensus time, if the local logical time is same, a smaller hash value is given priority through hash function.
 \end{enumerate}
 
-\begin{figure} \centering  
+\newpage
+
+\begin{figure}[H] \centering  
 	\includegraphics[width=0.9\textwidth]{topological_ordering.pdf}
 	\caption{An Example of time ordering of event blocks in OPERA chain}
 	\label{fig:sequence of operachain}
