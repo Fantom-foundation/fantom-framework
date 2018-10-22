@@ -419,24 +419,24 @@ Examples of domination relation in DAGs
 
 This section gives several examples of DAGs and the domination relation between their event blocks.
 
-(a)<img src="domtrees" title="fig:" alt="Examples of OPERA chain and dominator tree" />
-(b)<img src="domtrees_add1event" title="fig:" alt="Examples of OPERA chain and dominator tree" />
+(a)<img src="domtrees.png" title="fig:" alt="Examples of OPERA chain and dominator tree" />
+(b)<img src="domtrees_add1event.png" title="fig:" alt="Examples of OPERA chain and dominator tree" />
 
 Figure \[fig:domtrees1\] shows an examples of a DAG and dominator trees.
 
-<img src="domset" alt="An example of OPERA chain and its 2/3 domination graph. The \frac{2}{3}-dom sets are shown in grey." />
+<img src="domset.png" alt="An example of OPERA chain and its 2/3 domination graph. The \frac{2}{3}-dom sets are shown in grey." />
 
 Figure \[fig:domset1\] depicts an example of a DAG and 2/3 dom sets.
 
-(a) <img src="deptrees" title="fig:" alt="An example of dependency graphs on individual nodes. From (a)-(c) there is one new event block appended. There is no fork, the simplified dependency graphs become trees." />
-(b) <img src="deptrees_mod_add1event" title="fig:" alt="An example of dependency graphs on individual nodes. From (a)-(c) there is one new event block appended. There is no fork, the simplified dependency graphs become trees." />
-(c) <img src="deptrees_mod_add2event" title="fig:" alt="An example of dependency graphs on individual nodes. From (a)-(c) there is one new event block appended. There is no fork, the simplified dependency graphs become trees." />
+(a) <img src="deptrees.png" title="fig:" alt="An example of dependency graphs on individual nodes. From (a)-(c) there is one new event block appended. There is no fork, the simplified dependency graphs become trees." />
+(b) <img src="deptrees_mod_add1event.png" title="fig:" alt="An example of dependency graphs on individual nodes. From (a)-(c) there is one new event block appended. There is no fork, the simplified dependency graphs become trees." />
+(c) <img src="deptrees_mod_add2event.png" title="fig:" alt="An example of dependency graphs on individual nodes. From (a)-(c) there is one new event block appended. There is no fork, the simplified dependency graphs become trees." />
 
 Figure \[fig:deptreesmod1\] shows an example an dependency graphs. On each row, the left most figure shows the latest OPERA chain. The left figures on each row depict the dependency graphs of each node, which are in their compact form. When no fork presents, each of the compact dependency graphs is a tree.
 
-(a)<img src="deptrees_fork" title="fig:" alt="An example of a pair of fork events in an OPERA chain. The fork events are shown in red and green. The OPERA chains from (a) to (d) are different by adding one single event at a time." />
-(b)<img src="deptrees_fork_add1event" title="fig:" alt="An example of a pair of fork events in an OPERA chain. The fork events are shown in red and green. The OPERA chains from (a) to (d) are different by adding one single event at a time." />
-(c)<img src="deptrees_fork_add2event" title="fig:" alt="An example of a pair of fork events in an OPERA chain. The fork events are shown in red and green. The OPERA chains from (a) to (d) are different by adding one single event at a time." />
+(a)<img src="deptrees_fork.png" title="fig:" alt="An example of a pair of fork events in an OPERA chain. The fork events are shown in red and green. The OPERA chains from (a) to (d) are different by adding one single event at a time." />
+(b)<img src="deptrees_fork_add1event.png" title="fig:" alt="An example of a pair of fork events in an OPERA chain. The fork events are shown in red and green. The OPERA chains from (a) to (d) are different by adding one single event at a time." />
+(c)<img src="deptrees_fork_add2event.png" title="fig:" alt="An example of a pair of fork events in an OPERA chain. The fork events are shown in red and green. The OPERA chains from (a) to (d) are different by adding one single event at a time." />
 
 Figure \[fig:deptreesfork1\] shows an example of a pair of fork events. Each row shows an OPERA chain (left most) and the compact dependency graphs on each node (right). The fork events are shown in red and green vertices
 
