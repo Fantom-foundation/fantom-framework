@@ -1,0 +1,57 @@
+\begin{thebibliography}{10}
+
+\bibitem{lachesis01}
+Sang-Min Choi, Jiho Park, Quan Nguyen, Kiyoung Jang, Hyunjoon Cheob, Yo-Sub
+  Han, and Byung-Ik Ahn.
+\newblock Opera: Reasoning about continuous common knowledge in asynchronous
+  distributed systems, 2018.
+
+\bibitem{Lamport82}
+Leslie Lamport, Robert Shostak, and Marshall Pease.
+\newblock The byzantine generals problem.
+\newblock {\em ACM Trans. Program. Lang. Syst.}, 4(3):382--401, July 1982.
+
+\bibitem{bcbook15}
+Melanie Swan.
+\newblock {\em Blockchain: Blueprint for a new economy}.
+\newblock O'Reilly Media, 2015.
+
+\bibitem{randomized03}
+James Aspnes.
+\newblock Randomized protocols for asynchronous consensus.
+\newblock {\em Distributed Computing}, 16(2-3):165--175, 2003.
+
+\bibitem{paxos01}
+Leslie Lamport et~al.
+\newblock Paxos made simple.
+\newblock {\em ACM Sigact News}, 32(4):18--25, 2001.
+
+\bibitem{bitcoin08}
+Satoshi Nakamoto.
+\newblock Bitcoin: A peer-to-peer electronic cash system, 2008.
+
+\bibitem{ppcoin12}
+Scott~Nadal Sunny~King.
+\newblock Ppcoin: Peer-to-peer crypto-currency with proof-of-stake, 2012.
+
+\bibitem{dpos14}
+Daniel Larimer.
+\newblock Delegated proof-of-stake (dpos), 2014.
+
+\bibitem{cck92}
+Prakash Panangaden and Kim Taylor.
+\newblock Concurrent common knowledge: defining agreement for asynchronous
+  systems.
+\newblock {\em Distributed Computing}, 6(2):73--93, 1992.
+
+\bibitem{Fischer85}
+Michael~J. Fischer, Nancy~A. Lynch, and Mike Paterson.
+\newblock Impossibility of distributed consensus with one faulty process.
+\newblock {\em J. {ACM}}, 32(2):374--382, 1985.
+
+\bibitem{lamport1978time}
+Leslie Lamport.
+\newblock Time, clocks, and the ordering of events in a distributed system.
+\newblock {\em Communications of the ACM}, 21(7):558--565, 1978.
+
+\end{thebibliography}
