@@ -1,0 +1,8 @@
+*~
+# LaTeX intermediary files
+*.fdb_latexmk
+*.dvi
+*.aux
+*.blg
+*.fls
+*.log
