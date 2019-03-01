@@ -637,10 +637,10 @@ Every node has a physical clock and it needs physical time to create an event bl
 The Lamport timestamps algorithm is as follows:
 
 \begin{enumerate}
-\item Each node increments its count value before creating an event block.
-\item When sending a message include its count value, receiver should consider which sender’s message is received and increments its count value.
-\item If current counter is less than or equal to the received count value from another node, then the count value of the recipient is updated.  
-\item If current counter is greater than the received count value from another node, then the current count value is updated.
+\item Each node initialises its Lamport clock count value to $0$.
+\item Each node increments its Lamport clock count value before creating an event block.
+\item When sending a message each node includes its Lamport clock count value (we call this value Lamport timestamp).
+\item Upon receiving a message receiver sets its Lamport clock count value to be greater or equal its present value and greater than Lamport timestamp value received.
 \end{enumerate}
 
 
